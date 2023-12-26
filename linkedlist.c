@@ -18,6 +18,25 @@ node* deletee(node *head){
 	p2->next=NULL;
 	return head;
 }
+node* insert(node *head){
+	node* temp;
+	temp=(node*)malloc(sizeof(node));
+	int a;
+	printf("Enter the value to be inserted : ");
+	scanf("%d",&a);
+	temp->data=a;
+	temp->next=NULL;
+	if(head==NULL){
+		head=temp;
+		return head;
+	}
+	node* p1=head;
+	while(p1->next!=NULL){
+		p1=p1->next;
+	}
+	p1->next=temp;
+	return head;
+}
 int main(){
 	node* head;
 	head=(node*)malloc(sizeof(node));
@@ -25,11 +44,15 @@ int main(){
 	char ch;
 	printf("\t\tLinked List");
 	printf("\n\tFor deletion \t---- d");
+	printf("\n\tFor insertion \t---- i");
 	printf("\n\nEnter your choice : ");
 	scanf("%c",&ch);
 	switch(ch){
 		case 'd':
-			head=deletee(head);
+                        head=deletee(head);
+
+		case 'i':
+			head=insert(head);
 			break;
 		default:
 			printf("\n\tInvalid Entry.");
